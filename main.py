@@ -6,22 +6,29 @@ pd.set_option('display.max_columns', None)
 
 # sanitization options
 VALIDATE_MSM_DATE = True  # make sure the provided date exists and is valid
-REMOVE_TIME_SINCE_RESET = True  # only required for analysing stuff that resets independently of the date - drops column if not required
-ASSUME_ZERO_TORCHES = True  # assume 0 torches if not provided, removes rows with no torch values if False
+VALIDATE_DAY_OR_NIGHT = False  # for paironormals: of the two day/night columns, at least one must be true
+VALIDATE_ISLAND_NAME = True  # checks the island name is in the list of possible island names
 VALIDATE_PARENTS_EXIST = True  # check that parents are in the list of monsters that can breed
+VALIDATE_PARENT_LEVELS = True  # levels must exist and be between 4-20
 VALIDATE_RESULTS_EXIST = True  # check that results are in the list of monsters that can be bred
 
-# master sheet details
+REMOVE_TIME_SINCE_RESET = True  # only required for analysing stuff that resets independently of the date - drops column if not required
+ASSUME_ZERO_TORCHES = True  # assume 0 torches if not provided, removes rows with no torch values if False
+COERCE_ISLAND_NAME = True  # some island names have incorrect capitalisation, this fixes them
+
+
+# list of possible island names
+island_names = ["Plant", "Cold", "Air", "Water", "Earth", "Shugabush", "Ethereal", "Haven", "Oasis", "Mythical", "Light", "Psychic", "Faerie", "Bone", "Sanctum", "Shanty", "M Plant", "M Cold", "M Air", "M Water", "M Earth", "M Light", "M Psychic", "M Faerie", "M Bone"]
+
+# live fetching the master sheet as a csv
 SHEET_ID = "15kDI5lQL7szwh4YbjeZ6c4xRcLNpiMkXwLwfQzqGhCQ"
 GID = "0"
-
-# live fetch of the sheet as a csv
 url = f"https://docs.google.com/spreadsheets/d/{SHEET_ID}/export?format=csv&gid={GID}"
 print("Fetching breeding data from:", url)
 df = pd.read_csv(url, header=0)
 print("Breeding data fetched")
 
-# monster breeding details
+# live fetching the list of monsters as a csv
 VALIDATION_SHEET_ID = "1jn0Pt8SH0ve0WiH8RZlL-nyQODSriUCOJQlN6yLc9_E"
 VALIDATION_GID = "1001758888"
 url_val = f"https://docs.google.com/spreadsheets/d/{VALIDATION_SHEET_ID}/export?format=csv&gid={VALIDATION_GID}"
@@ -31,9 +38,6 @@ print("Validation data fetched")
 
 all_parent_monsters = df_val['Monsters that breed'].dropna().unique().tolist()
 all_result_monsters = df_val['Monsters that are bred'].dropna().unique().tolist()
-#print(all_parent_monsters)
-#print(all_result_monsters)
-
 
 # flattening nested columns
 unnamed_col_count = 0
@@ -52,6 +56,7 @@ for col in df.columns:
         df.rename(columns={col: col.replace('"', '')}, inplace=True)
 
     if unnamed_col_count > 2:
+        print("there should only be two unnamed columns, one for each parent level")
         exit(1)  # format has changed, exit
 
 # renaming the old Parent 1/2 columns to Parent 1/2 Species to fit with the flattened structure
@@ -59,53 +64,117 @@ df.rename(columns={'Parent 1': 'Parent 1 Species', 'Parent 2': 'Parent 2 Species
 # drops the second row which is now redundant
 df = df.drop(index=0).reset_index(drop=True)
 
+# cleaning up island names if required
+if COERCE_ISLAND_NAME:
+    island_col = [col for col in df.columns if 'Island' in col][0]
+    df[island_col] = df[island_col].str.title()
+
+
+# the df is now in a workable format so can start validation
+# each check runs on the original then a cleaned version is created at the end with violations removed or coerced
+original = df.copy()
+# storing row violation indexes for each rule
+bad = {}  # dict of {rule_name: set(indexes)}
+
 # date validation
 if VALIDATE_MSM_DATE:
     date_col = [col for col in df.columns if 'Date' in col][0]
-    print(date_col)
-    df = df[pd.to_datetime(df[date_col], errors='coerce').notna()].reset_index(drop=True)
+    bad['date'] = set(original.index[pd.to_datetime(original[date_col], errors='coerce').isna()])
+else:
+    bad['date'] = set()
+
+# day? or night? validation
+if VALIDATE_DAY_OR_NIGHT:
+    day_col = [col for col in df.columns if 'Day?' in col][0]
+    night_col = [col for col in df.columns if 'Night?' in col][0]
+    # at least one of the two columns must be True
+    ok = (original[day_col] == True) | (original[night_col] == True)
+    bad['daynight'] = set(original.index[~ok])
 
 # time since reset validation or removal
 if REMOVE_TIME_SINCE_RESET:
     time_col = [col for col in df.columns if 'Time since reset' in col][0]
-    df = df.drop(columns=[time_col])
+    bad['time'] = set()
 else:
     time_col = [col for col in df.columns if 'Time since reset' in col][0]
-    df = df[pd.to_timedelta(df[time_col], errors='coerce').notna()].reset_index(drop=True)
+    bad['time'] = set(original.index[pd.to_timedelta(original[time_col], errors='coerce').isna()])
 
 
-# assume zero torches coercion or removal of blank torch-count entries
-if ASSUME_ZERO_TORCHES:
-    torch_col = [col for col in df.columns if 'Torches' in col][0]
-    df[torch_col] = df[torch_col].fillna(0)
+# torches validation (N/A -> 0 or drop choice happens later)
+torch_col = [col for col in df.columns if 'Torches' in col][0]
+bad['torches'] = set(original.index[pd.to_numeric(original[torch_col], errors='coerce').isna()])
+
+# island name validation
+if VALIDATE_ISLAND_NAME:
+    island_col = [col for col in df.columns if 'Island' in col][0]
+    ok = original[island_col].isin(island_names)
+    bad['island'] = set(original.index[~ok])
 else:
-    torch_col = [col for col in df.columns if 'Torches' in col][0]
-    df = df[pd.to_numeric(df[torch_col], errors='coerce').notna()].reset_index(drop=True)
+    bad['island'] = set()
+
 
 # parent monster validation
 if VALIDATE_PARENTS_EXIST:
     parent1_col = [col for col in df.columns if 'Parent 1 Species' in col][0]
     parent2_col = [col for col in df.columns if 'Parent 2 Species' in col][0]
+    ok = original[parent1_col].isin(all_parent_monsters) & original[parent2_col].isin(all_parent_monsters)
+    bad['parents'] = set(original.index[~ok])
+else:
+    bad['parents'] = set()
 
-    invalid_parents_df = df[~df[parent1_col].isin(all_parent_monsters) | ~df[parent2_col].isin(all_parent_monsters)]
-    if not invalid_parents_df.empty:
-        print("Invalid parent monster entries:")
-        print(invalid_parents_df)
-
-    df = df[df[parent1_col].isin(all_parent_monsters) & df[parent2_col].isin(all_parent_monsters)].reset_index(drop=True)
+# parent level validation
+if VALIDATE_PARENT_LEVELS:
+    parent1_level_col = [col for col in df.columns if 'Parent 1 Level' in col][0]
+    parent2_level_col = [col for col in df.columns if 'Parent 2 Level' in col][0]
+    level1 = pd.to_numeric(original[parent1_level_col], errors='coerce')
+    level2 = pd.to_numeric(original[parent2_level_col], errors='coerce')
+    ok = (level1.between(4, 20)) & (level2.between(4, 20))
+    bad['levels'] = set(original.index[~ok])
 
 # result monster validation
 if VALIDATE_RESULTS_EXIST:
     result_col = [col for col in df.columns if 'Result Monster' in col][0]
+    ok = original[result_col].isin(all_result_monsters)
+    bad['result'] = set(original.index[~ok])
+else:
+    bad['results'] = set()
 
-    invalid_results_df = df[~df[result_col].isin(all_result_monsters)]
-    if not invalid_results_df.empty:
-        print("Invalid result monster entries:")
-        print(invalid_results_df)
+to_drop = set()
+for rule, indexes in bad.items():
+    if len(indexes) > 0:
+        print(f"Found {len(indexes)} violations of rule: {rule}")
+        to_drop = to_drop.union(indexes)
+        print(original.loc[list(indexes)])
 
-    df = df[df[result_col].isin(all_result_monsters)].reset_index(drop=True)
 
-print(df)
+cleaned = original.drop(index=to_drop).reset_index(drop=True)
 
-df.to_csv('msm_data.csv', index=False)
+print("\nSummary ============")
+
+# drop time since reset?
+if REMOVE_TIME_SINCE_RESET:
+    cleaned = cleaned.drop(columns=[time_col])
+    print("[x] Removed time since reset column")
+# torch 0 default?
+if ASSUME_ZERO_TORCHES:
+    cleaned[torch_col] = pd.to_numeric(cleaned[torch_col], errors='coerce').fillna(0).astype(int)
+    print("[x] Assumed 0 torches when no value provided\n")
+
+total_violations = 0
+for rule, indexes in bad.items():
+    if len(indexes) > 0:
+        if rule == 'torches' and ASSUME_ZERO_TORCHES:
+            continue  # already handled
+        total_violations += len(indexes)
+        print(f"Removed {len(indexes)} violations of rule: {rule}")
+
+print("\nOriginal row count:", len(original))
+print(f"Total violations: {total_violations}")
+print("Cleaned row count:", len(cleaned))
+
+print("====================")
+
+print("\nExporting cleaned data to msm_data.csv")
+
+cleaned.to_csv('msm_data.csv', index=False)
 
