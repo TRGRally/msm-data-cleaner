@@ -1,0 +1,509 @@
+Species,Elements
+Tweedle,Air
+Rare Tweedle,Air
+Epic Tweedle,Air
+Potbelly,Plant
+Rare Potbelly,Plant
+Epic Potbelly,Plant
+Noggin,Earth
+Rare Noggin,Earth
+Epic Noggin,Earth
+Toe Jammer,Water
+Rare Toe Jammer,Water
+Epic Toe Jammer,Water
+Mammott,Cold
+Rare Mammott,Cold
+Epic Mammott,Cold
+Dandidoo,"Air, Plant"
+Rare Dandidoo,"Air, Plant"
+Epic Dandidoo,"Air, Plant"
+Cybop,"Air, Earth"
+Rare Cybop,"Air, Earth"
+Epic Cybop,"Air, Earth"
+Quibble,"Air, Water"
+Rare Quibble,"Air, Water"
+Epic Quibble,"Air, Water"
+Pango,"Air, Cold"
+Rare Pango,"Air, Cold"
+Epic Pango,"Air, Cold"
+Shrubb,"Plant, Earth"
+Rare Shrubb,"Plant, Earth"
+Epic Shrubb,"Plant, Earth"
+Oaktopus,"Plant, Water"
+Rare Oaktopus,"Plant, Water"
+Epic Oaktopus,"Plant, Water"
+Furcorn,"Plant, Cold"
+Rare Furcorn,"Plant, Cold"
+Epic Furcorn,"Plant, Cold"
+Fwog,"Earth, Water"
+Rare Fwog,"Earth, Water"
+Epic Fwog,"Earth, Water"
+Drumpler,"Earth, Cold"
+Rare Drumpler,"Earth, Cold"
+Epic Drumpler,"Earth, Cold"
+Maw,"Water, Cold"
+Rare Maw,"Water, Cold"
+Epic Maw,"Water, Cold"
+Reedling,"Air, Plant, Earth"
+Rare Reedling,"Air, Plant, Earth"
+Epic Reedling,"Air, Plant, Earth"
+Spunge,"Air, Plant, Water"
+Rare Spunge,"Air, Plant, Water"
+Epic Spunge,"Air, Plant, Water"
+Thumpies,"Air, Plant, Cold"
+Rare Thumpies,"Air, Plant, Cold"
+Epic Thumpies,"Air, Plant, Cold"
+Scups,"Air, Earth, Water"
+Rare Scups,"Air, Earth, Water"
+Epic Scups,"Air, Earth, Water"
+PomPom,"Air, Earth, Cold"
+Rare PomPom,"Air, Earth, Cold"
+Epic PomPom,"Air, Earth, Cold"
+Congle,"Air, Water, Cold"
+Rare Congle,"Air, Water, Cold"
+Epic Congle,"Air, Water, Cold"
+Pummel,"Plant, Earth, Water"
+Rare Pummel,"Plant, Earth, Water"
+Epic Pummel,"Plant, Earth, Water"
+Clamble,"Plant, Earth, Cold"
+Rare Clamble,"Plant, Earth, Cold"
+Epic Clamble,"Plant, Earth, Cold"
+Bowgart,"Plant, Water, Cold"
+Rare Bowgart,"Plant, Water, Cold"
+Epic Bowgart,"Plant, Water, Cold"
+T-Rox,"Earth, Water, Cold"
+Rare T-Rox,"Earth, Water, Cold"
+Epic T-Rox,"Earth, Water, Cold"
+Shellbeat,"Air, Plant, Earth, Water"
+Rare Shellbeat,"Air, Plant, Earth, Water"
+Epic Shellbeat,"Air, Plant, Earth, Water"
+Quarrister,"Air, Plant, Earth, Cold"
+Rare Quarrister,"Air, Plant, Earth, Cold"
+Epic Quarrister,"Air, Plant, Earth, Cold"
+Deedge,"Air, Plant, Water, Cold"
+Rare Deedge,"Air, Plant, Water, Cold"
+Epic Deedge,"Air, Plant, Water, Cold"
+Riff,"Air, Earth, Water, Cold"
+Rare Riff,"Air, Earth, Water, Cold"
+Epic Riff,"Air, Earth, Water, Cold"
+Entbrat,"Plant, Earth, Water, Cold"
+Rare Entbrat,"Plant, Earth, Water, Cold"
+Epic Entbrat,"Plant, Earth, Water, Cold"
+Mimic,"Air, Plant, Earth, Water, Cold"
+Rare Mimic,"Air, Plant, Earth, Water, Cold"
+Kayna,Fire
+Rare Kayna,Fire
+Epic Kayna,Fire
+Glowl,"Air, Fire"
+Rare Glowl,"Air, Fire"
+Epic Glowl,"Air, Fire"
+Flowah,"Plant, Fire"
+Rare Flowah,"Plant, Fire"
+Epic Flowah,"Plant, Fire"
+Stogg,"Earth, Fire"
+Rare Stogg,"Earth, Fire"
+Epic Stogg,"Earth, Fire"
+Phangler,"Water, Fire"
+Rare Phangler,"Water, Fire"
+Epic Phangler,"Water, Fire"
+Boskus,"Cold, Fire"
+Rare Boskus,"Cold, Fire"
+Epic Boskus,"Cold, Fire"
+Barrb,"Air, Plant, Fire"
+Rare Barrb,"Air, Plant, Fire"
+Epic Barrb,"Air, Plant, Fire"
+Floogull,"Air, Earth, Fire"
+Rare Floogull,"Air, Earth, Fire"
+Epic Floogull,"Air, Earth, Fire"
+Whaddle,"Air, Water, Fire"
+Rare Whaddle,"Air, Water, Fire"
+Epic Whaddle,"Air, Water, Fire"
+Woolabee,"Air, Cold, Fire"
+Rare Woolabee,"Air, Cold, Fire"
+Epic Woolabee,"Air, Cold, Fire"
+Repatillo,"Plant, Earth, Fire"
+Rare Repatillo,"Plant, Earth, Fire"
+Epic Repatillo,"Plant, Earth, Fire"
+Rootitoot,"Plant, Water, Fire"
+Rare Rootitoot,"Plant, Water, Fire"
+Epic Rootitoot,"Plant, Water, Fire"
+Sooza,"Plant, Cold, Fire"
+Rare Sooza,"Plant, Cold, Fire"
+Epic Sooza,"Plant, Cold, Fire"
+Thrumble,"Earth, Water, Fire"
+Rare Thrumble,"Earth, Water, Fire"
+Epic Thrumble,"Earth, Water, Fire"
+Ziggurab,"Earth, Cold, Fire"
+Rare Ziggurab,"Earth, Cold, Fire"
+Epic Ziggurab,"Earth, Cold, Fire"
+Wynq,"Water, Cold, Fire"
+Rare Wynq,"Water, Cold, Fire"
+Epic Wynq,"Water, Cold, Fire"
+Tring,"Air, Plant, Earth, Fire"
+Rare Tring,"Air, Plant, Earth, Fire"
+Epic Tring,"Air, Plant, Earth, Fire"
+Bisonorus,"Air, Plant, Water, Fire"
+Rare Bisonorus,"Air, Plant, Water, Fire"
+Epic Bisonorus,"Air, Plant, Water, Fire"
+Yelmut,"Air, Plant, Cold, Fire"
+Rare Yelmut,"Air, Plant, Cold, Fire"
+Epic Yelmut,"Air, Plant, Cold, Fire"
+Flum Ox,"Air, Earth, Water, Fire"
+Rare Flum Ox,"Air, Earth, Water, Fire"
+Krillby,"Air, Earth, Cold, Fire"
+Rare Krillby,"Air, Earth, Cold, Fire"
+Epic Krillby,"Air, Earth, Cold, Fire"
+Sneyser,"Air, Water, Cold, Fire"
+Rare Sneyser,"Air, Water, Cold, Fire"
+Epic Sneyser,"Air, Water, Cold, Fire"
+Edamimi,"Plant, Earth, Water, Fire"
+Rare Edamimi,"Plant, Earth, Water, Fire"
+Epic Edamimi,"Plant, Earth, Water, Fire"
+PongPing,"Plant, Earth, Cold, Fire"
+Rare PongPing,"Plant, Earth, Cold, Fire"
+Epic PongPing,"Plant, Earth, Cold, Fire"
+Incisaur,"Plant, Water, Cold, Fire"
+Rare Incisaur,"Plant, Water, Cold, Fire"
+Epic Incisaur,"Plant, Water, Cold, Fire"
+Tiawa,"Earth, Water, Cold, Fire"
+Rare Tiawa,"Earth, Water, Cold, Fire"
+Epic Tiawa,"Earth, Water, Cold, Fire"
+Candelavra,"Air, Plant, Earth, Water, Fire"
+Rare Candelavra,"Air, Plant, Earth, Water, Fire"
+Drummidary,"Air, Plant, Earth, Cold, Fire"
+Rare Drummidary,"Air, Plant, Earth, Cold, Fire"
+Bowhead,"Air, Plant, Water, Cold, Fire"
+Rare Bowhead,"Air, Plant, Water, Cold, Fire"
+Tuskski,"Air, Earth, Water, Cold, Fire"
+Rare Tuskski,"Air, Earth, Water, Cold, Fire"
+Gnarls,"Plant, Earth, Water, Cold, Fire"
+Rare Gnarls,"Plant, Earth, Water, Cold, Fire"
+Theremind,Psychic
+Rare Theremind,Psychic
+Clackula,Bone
+Rare Clackula,Bone
+Fluoress,Light
+Rare Fluoress,Light
+Floot Fly,Faerie
+Rare Floot Fly,Faerie
+Bonkers,"Plant, Psychic"
+Rare Bonkers,"Plant, Psychic"
+Gob,"Plant, Light"
+Rare Gob,"Plant, Light"
+Peckidna,"Earth, Bone"
+Rare Peckidna,"Earth, Bone"
+HippityHop,"Earth, Faerie"
+Rare HippityHop,"Earth, Faerie"
+Poppette,"Water, Psychic"
+Rare Poppette,"Water, Psychic"
+Denchuhs,"Water, Bone"
+Rare Denchuhs,"Water, Bone"
+Bulbo,"Cold, Light"
+Rare Bulbo,"Cold, Light"
+Squot,"Cold, Faerie"
+Rare Squot,"Cold, Faerie"
+Yuggler,"Fire, Psychic"
+Rare Yuggler,"Fire, Psychic"
+Hawlo,"Fire, Bone"
+Rare Hawlo,"Fire, Bone"
+Pluckbill,"Fire, Light"
+Rare Pluckbill,"Fire, Light"
+Wimmzies,"Fire, Faerie"
+Rare Wimmzies,"Fire, Faerie"
+Xyster,"Psychic, Bone"
+Rare Xyster,"Psychic, Bone"
+Cahoot,"Psychic, Light"
+Rare Cahoot,"Psychic, Light"
+Déjà-Jin,"Psychic, Faerie"
+Rare Déjà-Jin,"Psychic, Faerie"
+Roarick,"Bone, Light"
+Rare Roarick,"Bone, Light"
+Osstax,"Bone, Faerie"
+Rare Osstax,"Bone, Faerie"
+Knucklehead,"Light, Faerie"
+Rare Knucklehead,"Light, Faerie"
+Tapricorn,"Plant, Water, Psychic"
+Rare Tapricorn,"Plant, Water, Psychic"
+Spytrap,"Plant, Cold, Light"
+Rare Spytrap,"Plant, Cold, Light"
+Rooba,"Plant, Fire, Psychic"
+Rare Rooba,"Plant, Fire, Psychic"
+TooToo,"Plant, Fire, Light"
+Rare TooToo,"Plant, Fire, Light"
+Withur,"Earth, Water, Bone"
+Rare Withur,"Earth, Water, Bone"
+Cantorell,"Earth, Cold, Faerie"
+Rare Cantorell,"Earth, Cold, Faerie"
+Uuduk,"Earth, Fire, Bone"
+Rare Uuduk,"Earth, Fire, Bone"
+Bridg-it,"Earth, Fire, Faerie"
+Rare Bridg-it,"Earth, Fire, Faerie"
+Periscorp,"Water, Fire, Psychic"
+Rare Periscorp,"Water, Fire, Psychic"
+Banjaw,"Water, Fire, Bone"
+Rare Banjaw,"Water, Fire, Bone"
+Fiddlement,"Cold, Fire, Light"
+Rare Fiddlement,"Cold, Fire, Light"
+Clavi Gnat,"Cold, Fire, Faerie"
+Rare Clavi Gnat,"Cold, Fire, Faerie"
+G'day,"Psychic, Bone, Light"
+Rare G'day,"Psychic, Bone, Light"
+Larvaluss,"Psychic, Bone, Faerie"
+Rare Larvaluss,"Psychic, Bone, Faerie"
+Frondley,"Psychic, Light, Faerie"
+Rare Frondley,"Psychic, Light, Faerie"
+Mushaboom,"Bone, Light, Faerie"
+Rare Mushaboom,"Bone, Light, Faerie"
+Gloptic,"Plant, Water, Fire, Psychic"
+Rare Gloptic,"Plant, Water, Fire, Psychic"
+Blow't,"Plant, Cold, Fire, Light"
+Rare Blow't,"Plant, Cold, Fire, Light"
+Plinkajou,"Earth, Water, Fire, Bone"
+Rare Plinkajou,"Earth, Water, Fire, Bone"
+Pladdie,"Earth, Cold, Fire, Faerie"
+Rare Pladdie,"Earth, Cold, Fire, Faerie"
+Enchantling,"Psychic, Bone, Light, Faerie"
+Ghazt,Plasma
+Rare Ghazt,Plasma
+Epic Ghazt,Plasma
+Grumpyre,Shadow
+Rare Grumpyre,Shadow
+Epic Grumpyre,Shadow
+Reebro,Mech
+Rare Reebro,Mech
+Epic Reebro,Mech
+Jeeode,Crystal
+Rare Jeeode,Crystal
+Epic Jeeode,Crystal
+Humbug,Poison
+Rare Humbug,Poison
+Epic Humbug,Poison
+Whisp,"Plasma, Shadow"
+Rare Whisp,"Plasma, Shadow"
+Epic Whisp,"Plasma, Shadow"
+Nebulob,"Plasma, Mech"
+Rare Nebulob,"Plasma, Mech"
+Epic Nebulob,"Plasma, Mech"
+Sox,"Plasma, Crystal"
+Rare Sox,"Plasma, Crystal"
+Epic Sox,"Plasma, Crystal"
+Jellbilly,"Plasma, Poison"
+Rare Jellbilly,"Plasma, Poison"
+Epic Jellbilly,"Plasma, Poison"
+Arackulele,"Shadow, Mech"
+Rare Arackulele,"Shadow, Mech"
+Epic Arackulele,"Shadow, Mech"
+Boodoo,"Shadow, Crystal"
+Rare Boodoo,"Shadow, Crystal"
+Epic Boodoo,"Shadow, Crystal"
+Kazilleon,"Shadow, Poison"
+Rare Kazilleon,"Shadow, Poison"
+Epic Kazilleon,"Shadow, Poison"
+Bellowfish,"Mech, Crystal"
+Rare Bellowfish,"Mech, Crystal"
+Epic Bellowfish,"Mech, Crystal"
+Dragong,"Mech, Poison"
+Rare Dragong,"Mech, Poison"
+Epic Dragong,"Mech, Poison"
+Fung Pray,"Crystal, Poison"
+Rare Fung Pray,"Crystal, Poison"
+Epic Fung Pray,"Crystal, Poison"
+Yooreek,"Plasma, Shadow, Mech"
+Rare Yooreek,"Plasma, Shadow, Mech"
+Meebkin,"Plasma, Shadow, Crystal"
+Rare Meebkin,"Plasma, Shadow, Crystal"
+Blarret,"Plasma, Shadow, Poison"
+Rare Blarret,"Plasma, Shadow, Poison"
+Gaddzooks,"Plasma, Mech, Crystal"
+Rare Gaddzooks,"Plasma, Mech, Crystal"
+Auglur,"Plasma, Mech, Poison"
+Rare Auglur,"Plasma, Mech, Poison"
+Flasque,"Plasma, Crystal, Poison"
+Nitebear,"Shadow, Mech, Crystal"
+Piplash,"Shadow, Mech, Poison"
+X'rt,"Shadow, Crystal, Poison"
+Teeter-Tauter,"Mech, Crystal, Poison"
+Whaill,"Plasma, Shadow, Mech, Crystal"
+Vhenshun,"Plasma, Shadow, Mech, Poison"
+Pentumbra,"Plasma, Shadow, Crystal, Poison"
+Rhysmuth,"Plasma, Mech, Crystal, Poison"
+Oogiddy,"Shadow, Mech, Crystal, Poison"
+BeMeebEth,"Plasma, Shadow, Mech, Crystal, Poison"
+Hairionette,Control
+Owlesque,Hoax
+Arcorina,Ruin
+Lowb,Plant (Primordial)
+Bogle,Air (Primordial)
+Wubbox,Electricity
+Rare Wubbox,Electricity
+Epic Wubbox,Electricity
+Brump,Electricity
+Rare Brump,Electricity
+Epic Brump,Electricity
+Zynth,Electricity
+Rare Zynth,Electricity
+Epic Zynth,Electricity
+Poewk,Electricity
+Rare Poewk,Electricity
+Epic Poewk,Electricity
+Thwok,Electricity
+Rare Thwok,Electricity
+Epic Thwok,Electricity
+Dwumrohl,Electricity
+Rare Dwumrohl,Electricity
+Epic Dwumrohl,Electricity
+Zuuker,Electricity
+Rare Zuuker,Electricity
+Epic Zuuker,Electricity
+Screemu,Electricity
+Rare Screemu,Electricity
+Tympa,Electricity
+Rare Tympa,Electricity
+Epic Tympa,Electricity
+Dermit,Electricity
+Rare Dermit,Electricity
+Gheegur,Electricity
+Rare Gheegur,Electricity
+Whajje,Electricity
+Rare Whajje,Electricity
+Creepuscule,Electricity
+Rare Creepuscule,Electricity
+Blipsqueak,Electricity
+Rare Blipsqueak,Electricity
+Scargo,Electricity
+Rare Scargo,Electricity
+Astropod,Electricity
+Rare Astropod,Electricity
+Pixolotl,Electricity
+Rare Pixolotl,Electricity
+Bona-Petite,Electricity
+Rare Bona-Petite,Electricity
+Maulch,Electricity
+Rare Maulch,Electricity
+Fleechwurm,Electricity
+Rare Fleechwurm,Electricity
+Shugabush,Legendary Monsters
+Shugarock,Legendary Monsters
+Shugabass,Legendary Monsters
+Shugajo,Legendary Monsters
+Shugabeats,Legendary Monsters
+Shugabuzz,Legendary Monsters
+Shugitar,Legendary Monsters
+Shugavox,Legendary Monsters
+Tawkerr,Legendary Monsters
+Parlsona,Legendary Monsters
+Maggpi,Legendary Monsters
+Stoowarb,Legendary Monsters
+Punkleton,Spooktacle
+Rare Punkleton,Spooktacle
+Epic Punkleton,Spooktacle
+Yool,Festival of Yay
+Rare Yool,Festival of Yay
+Epic Yool,Festival of Yay
+Schmoochle,Season of Love
+Rare Schmoochle,Season of Love
+Epic Schmoochle,Season of Love
+Blabbit,Eggs-Travaganza
+Rare Blabbit,Eggs-Travaganza
+Epic Blabbit,Eggs-Travaganza
+Hoola,SummerSong
+Rare Hoola,SummerSong
+Epic Hoola,SummerSong
+Gobbleygourd,Feast-Ember
+Rare Gobbleygourd,Feast-Ember
+Epic Gobbleygourd,Feast-Ember
+Clavavera,Beat Hereafter
+Rare Clavavera,Beat Hereafter
+Epic Clavavera,Beat Hereafter
+Viveine,Echoes of Eco
+Rare Viveine,Echoes of Eco
+Epic Viveine,Echoes of Eco
+Jam Boree,Anniversary Month
+Rare Jam Boree,Anniversary Month
+Epic Jam Boree,Anniversary Month
+Carillong,Crescendo Moon
+Rare Carillong,Crescendo Moon
+Epic Carillong,Crescendo Moon
+Whiz-bang,SkyPainting
+Rare Whiz-bang,SkyPainting
+Epic Whiz-bang,SkyPainting
+Monculus,Life-Formula
+Rare Monculus,Life-Formula
+Epic Monculus,Life-Formula
+Ffidyll,Cloverspell
+Rare Ffidyll,Cloverspell
+Epic Ffidyll,Cloverspell
+Boo'qwurm,MindBoggle
+Rare Boo'qwurm,MindBoggle
+Epic Boo'qwurm,MindBoggle
+Spurrit,Perplexplore
+Rare Spurrit,Perplexplore
+Epic Spurrit,Perplexplore
+Cataliszt,Dream
+Rare Cataliszt,Dream
+G'joob,Mythical (Plant)
+Rare G'joob,Mythical (Plant)
+Epic G'joob,Mythical (Plant)
+Strombonin,Mythical (Cold)
+Rare Strombonin,Mythical (Cold)
+Epic Strombonin,Mythical (Cold)
+Yawstrich,Mythical (Air)
+Rare Yawstrich,Mythical (Air)
+Epic Yawstrich,Mythical (Air)
+Anglow,Mythical (Water)
+Rare Anglow,Mythical (Water)
+Epic Anglow,Mythical (Water)
+Hyehehe,Mythical (Earth)
+Rare Hyehehe,Mythical (Earth)
+Epic Hyehehe,Mythical (Earth)
+Buzzinga,Mythical (Haven)
+Rare Buzzinga,Mythical (Haven)
+Epic Buzzinga,Mythical (Haven)
+Cherubble,Mythical (Oasis)
+Rare Cherubble,Mythical (Oasis)
+Epic Cherubble,Mythical (Oasis)
+Bleatnik,"Dream, Mythical (Plant)"
+Rare Bleatnik,"Dream, Mythical (Plant)"
+Cranchee,"Dream, Mythical (Cold)"
+Rare Cranchee,"Dream, Mythical (Cold)"
+Sporerow,"Dream, Mythical (Air)"
+Rare Sporerow,"Dream, Mythical (Air)"
+Pinghound,"Dream, Mythical (Water)"
+Rare Pinghound,"Dream, Mythical (Water)"
+Wheezel,"Dream, Mythical (Earth)"
+Rare Wheezel,"Dream, Mythical (Earth)"
+Knurv,"Dream, Mythical (Haven)"
+Rare Knurv,"Dream, Mythical (Haven)"
+shLep,"Dream, Mythical (Oasis)"
+Rare shLep,"Dream, Mythical (Oasis)"
+Hornacle,Celestials
+Adult Hornacle,Celestials
+Furnoss,Celestials
+Adult Furnoss,Celestials
+Glaishur,Celestials
+Adult Glaishur,Celestials
+Blasoom,Celestials
+Adult Blasoom,Celestials
+Syncopite,Celestials
+Adult Syncopite,Celestials
+Vhamp,Celestials
+Adult Vhamp,Celestials
+Galvana,Celestials
+Adult Galvana,Celestials
+Scaratar,Celestials
+Adult Scaratar,Celestials
+Loodvigg,Celestials
+Adult Loodvigg,Celestials
+Torrt,Celestials
+Adult Torrt,Celestials
+Plixie,Celestials
+Adult Plixie,Celestials
+Attmoz,Celestials
+Adult Attmoz,Celestials
+Do,Dipsters
+Re,Dipsters
+Mi,Dipsters
+Fa,Dipsters
+Sol,Dipsters
+La,Dipsters
+Ti,Dipsters
