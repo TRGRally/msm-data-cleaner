@@ -1,21 +1,27 @@
 import pandas as pd
 import numpy as np
 
-# stops pandas skipping columns when printing (for checking the dataframe flattening works)
-pd.set_option('display.max_columns', None)
 
-# sanitization options
+# OPTIONS ==============================================================================================================
+
+# pre-processing options
+ASSUME_ZERO_TORCHES = True  # assume 0 torches if not provided, removes rows with no torch values if False
+TITLE_CASE_ISLAND_NAME = True  # some island names have incorrect capitalisation, this fixes them
+
+# validation options
 VALIDATE_MSM_DATE = True  # make sure the provided date exists and is valid
 VALIDATE_DAY_OR_NIGHT = False  # for paironormals: of the two day/night columns, at least one must be true
 VALIDATE_ISLAND_NAME = True  # checks the island name is in the list of possible island names
+VALIDATE_TORCH_COUNT = True  # checks that torches is a number between 0-10
 VALIDATE_PARENTS_EXIST = True  # check that parents are in the list of monsters that can breed
 VALIDATE_PARENT_LEVELS = True  # levels must exist and be between 4-20
 VALIDATE_RESULTS_EXIST = True  # check that results are in the list of monsters that can be bred
 
+# post-processing options
 REMOVE_TIME_SINCE_RESET = True  # only required for analysing stuff that resets independently of the date - drops column if not required
-ASSUME_ZERO_TORCHES = True  # assume 0 torches if not provided, removes rows with no torch values if False
-COERCE_ISLAND_NAME = True  # some island names have incorrect capitalisation, this fixes them
+RARE_PARENTS_AS_COMMON = False  # makes all parents common. OFF by default as it messes with rare + common same species breeding, but can be useful for other analysis
 
+# ======================================================================================================================
 
 # list of possible island names
 island_names = ["Plant", "Cold", "Air", "Water", "Earth", "Shugabush", "Ethereal", "Haven", "Oasis", "Mythical", "Light", "Psychic", "Faerie", "Bone", "Sanctum", "Shanty", "M Plant", "M Cold", "M Air", "M Water", "M Earth", "M Light", "M Psychic", "M Faerie", "M Bone"]
@@ -26,6 +32,7 @@ GID = "0"
 url = f"https://docs.google.com/spreadsheets/d/{SHEET_ID}/export?format=csv&gid={GID}"
 print("Fetching breeding data from:", url)
 df = pd.read_csv(url, header=0)
+
 print("Breeding data fetched")
 
 # live fetching the list of monsters as a csv
@@ -64,10 +71,23 @@ df.rename(columns={'Parent 1': 'Parent 1 Species', 'Parent 2': 'Parent 2 Species
 # drops the second row which is now redundant
 df = df.drop(index=0).reset_index(drop=True)
 
+# saving the flattened csv for reference (to test sanitization and validation steps)
+df.to_csv('msm_data_flattened.csv', index=False)
+
+# storing row coercions for summary at end
+coerced = {}
+
 # cleaning up island names if required
-if COERCE_ISLAND_NAME:
+if TITLE_CASE_ISLAND_NAME:
     island_col = [col for col in df.columns if 'Island' in col][0]
+    coerced['title_case_island_name'] = (df[island_col] != df[island_col].str.title()).sum()
     df[island_col] = df[island_col].str.title()
+
+# coercing blank torch entries to zero if required
+if ASSUME_ZERO_TORCHES:
+    torch_col = [col for col in df.columns if 'Torches' in col][0]
+    coerced['assume_zero_torches'] = df[torch_col].isna().sum() + (df[torch_col] == '').sum()
+    df[torch_col] = pd.to_numeric(df[torch_col], errors='coerce').fillna(0).astype(int)
 
 
 # the df is now in a workable format so can start validation
@@ -100,10 +120,6 @@ else:
     bad['time'] = set(original.index[pd.to_timedelta(original[time_col], errors='coerce').isna()])
 
 
-# torches validation (N/A -> 0 or drop choice happens later)
-torch_col = [col for col in df.columns if 'Torches' in col][0]
-bad['torches'] = set(original.index[pd.to_numeric(original[torch_col], errors='coerce').isna()])
-
 # island name validation
 if VALIDATE_ISLAND_NAME:
     island_col = [col for col in df.columns if 'Island' in col][0]
@@ -111,6 +127,15 @@ if VALIDATE_ISLAND_NAME:
     bad['island'] = set(original.index[~ok])
 else:
     bad['island'] = set()
+
+# torch count validation
+if VALIDATE_TORCH_COUNT:
+    torch_col = [col for col in df.columns if 'Torches' in col][0]
+    torches = pd.to_numeric(original[torch_col], errors='coerce')
+    ok = torches.between(0, 10)
+    bad['torches'] = set(original.index[~ok])
+else:
+    bad['torches'] = set()
 
 
 # parent monster validation
@@ -146,35 +171,58 @@ for rule, indexes in bad.items():
         to_drop = to_drop.union(indexes)
         print(original.loc[list(indexes)])
 
+# making the clean data set
+cleaned = original
 
-cleaned = original.drop(index=to_drop).reset_index(drop=True)
+cleaned = cleaned.drop(index=to_drop).reset_index(drop=True)
 
-print("\nSummary ============")
+# post processing
+
+# treat rare parents as common?
+if RARE_PARENTS_AS_COMMON:
+    parent1_col = [col for col in cleaned.columns if 'Parent 1 Species' in col][0]
+    parent2_col = [col for col in cleaned.columns if 'Parent 2 Species' in col][0]
+    coerced['rare_parents_as_common'] = cleaned[parent1_col].str.startswith('Rare ').sum() + cleaned[parent2_col].str.startswith('Rare ').sum()
+    cleaned[parent1_col] = cleaned[parent1_col].str.replace('Rare ', '', regex=False)
+    cleaned[parent2_col] = cleaned[parent2_col].str.replace('Rare ', '', regex=False)
+    print(f"[x] Converted {coerced['rare_parents_as_common']} rare parents to common\n")
 
 # drop time since reset?
 if REMOVE_TIME_SINCE_RESET:
     cleaned = cleaned.drop(columns=[time_col])
-    print("[x] Removed time since reset column")
-# torch 0 default?
-if ASSUME_ZERO_TORCHES:
-    cleaned[torch_col] = pd.to_numeric(cleaned[torch_col], errors='coerce').fillna(0).astype(int)
-    print("[x] Assumed 0 torches when no value provided\n")
+
+
+print("\nSummary ================================")
+
+if REMOVE_TIME_SINCE_RESET:
+    print(f" [✓] Dropped column: {time_col}")
+
+total_coercions = 0
+for rule, count in coerced.items():
+    if count > 0:
+        total_coercions += count
+        print(f" [✓] Coerced {count} entries for: {rule}")
+
 
 total_violations = 0
 for rule, indexes in bad.items():
     if len(indexes) > 0:
-        if rule == 'torches' and ASSUME_ZERO_TORCHES:
-            continue  # already handled
         total_violations += len(indexes)
-        print(f"Removed {len(indexes)} violations of rule: {rule}")
+        print(f" [✓] Removed {len(indexes)} violations of rule: {rule}")
 
-print("\nOriginal row count:", len(original))
-print(f"Total violations: {total_violations}")
-print("Cleaned row count:", len(cleaned))
+print("\n Original row count:", len(original))
+print(f" Unique rows dropped: {len(to_drop)}")
+print(" Cleaned row count:", len(cleaned))
 
-print("====================")
-
-print("\nExporting cleaned data to msm_data.csv")
+print("========================================")
 
 cleaned.to_csv('msm_data.csv', index=False)
+
+print("Exported cleaned data to msm_data.csv")
+
+
+
+
+
+
 
