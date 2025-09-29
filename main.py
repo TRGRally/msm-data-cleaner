@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+import Dataset
 
 
 # OPTIONS ==============================================================================================================
@@ -16,10 +17,12 @@ VALIDATE_TORCH_COUNT = True  # checks that torches is a number between 0-10
 VALIDATE_PARENTS_EXIST = True  # check that parents are in the list of monsters that can breed
 VALIDATE_PARENT_LEVELS = True  # levels must exist and be between 4-20
 VALIDATE_RESULTS_EXIST = True  # check that results are in the list of monsters that can be bred
+VALIDATE_AVAILABILITY = False  # checks that a monster was available on the date of breeding if event based
+
 
 # post-processing options
 REMOVE_TIME_SINCE_RESET = True  # only required for analysing stuff that resets independently of the date - drops column if not required
-RARE_PARENTS_AS_COMMON = False  # makes all parents common. OFF by default as it messes with rare + common same species breeding, but can be useful for other analysis
+RARE_PARENTS_AS_COMMON = False  # makes all parents common. OFF by default as it messes with rare + common same species breeding, but is useful for the majority of stuff
 
 # ======================================================================================================================
 
@@ -35,6 +38,7 @@ df = pd.read_csv(url, header=0)
 
 print("Breeding data fetched")
 
+
 # live fetching the list of monsters as a csv
 VALIDATION_SHEET_ID = "1jn0Pt8SH0ve0WiH8RZlL-nyQODSriUCOJQlN6yLc9_E"
 VALIDATION_GID = "1001758888"
@@ -45,6 +49,21 @@ print("Validation data fetched")
 
 all_parent_monsters = df_val['Monsters that breed'].dropna().unique().tolist()
 all_result_monsters = df_val['Monsters that are bred'].dropna().unique().tolist()
+
+# opening availabilities.csv as a dataframe, contains an incomplete list of breeding availabilities (WIP)
+df_avail = pd.read_csv('./other data/availabilities.csv', header=0)
+# creating a dict of {monster: [(start1, stop1), (start2, stop2), ...]}
+availabilities = {}
+for idx, row in df_avail.iterrows():
+    start = pd.to_datetime(row['startdate'], errors='coerce')
+    stop = pd.to_datetime(row['stopdate'], errors='coerce')
+    monsters = [m.strip() for m in row['monsters'].split(',')]
+    for monster in monsters:
+        if monster not in availabilities:
+            availabilities[monster] = []
+        availabilities[monster].append((start, stop))
+print("Loaded availabilities for", len(availabilities), "monsters from ./other data/availabilities.csv")
+
 
 # flattening nested columns
 unnamed_col_count = 0
@@ -72,7 +91,8 @@ df.rename(columns={'Parent 1': 'Parent 1 Species', 'Parent 2': 'Parent 2 Species
 df = df.drop(index=0).reset_index(drop=True)
 
 # saving the flattened csv for reference (to test sanitization and validation steps)
-df.to_csv('msm_data_flattened.csv', index=False)
+df.to_csv('./intermediary logs/msm_data_flattened.csv', index=False)
+
 
 # storing row coercions for summary at end
 coerced = {}
@@ -164,12 +184,37 @@ if VALIDATE_RESULTS_EXIST:
 else:
     bad['results'] = set()
 
+# monster is available validation
+if VALIDATE_AVAILABILITY:
+    # availability isn't a complete list! off by default
+    date_col = [col for col in df.columns if 'Date' in col][0]
+    result_col = [col for col in df.columns if 'Result Monster' in col][0]
+    bad['availability'] = set()
+    for idx, row in original.iterrows():
+        monster = row[result_col]
+        date = row[date_col]
+        if monster in availabilities:
+            ok = False
+            for start, stop in availabilities[monster]:
+                if start <= date <= stop:
+                    ok = True
+                    break
+            if not ok:
+                bad['availability'].add(idx)
+else:
+    bad['availability'] = set()
+
+
+
 to_drop = set()
 for rule, indexes in bad.items():
     if len(indexes) > 0:
         print(f"Found {len(indexes)} violations of rule: {rule}")
         to_drop = to_drop.union(indexes)
         print(original.loc[list(indexes)])
+
+
+
 
 # making the clean data set
 cleaned = original
@@ -218,7 +263,13 @@ print("========================================")
 
 cleaned.to_csv('msm_data.csv', index=False)
 
+print(availabilities)
+
 print("Exported cleaned data to msm_data.csv")
+
+# loading the dataset class for analysis
+dataset = Dataset.Dataset('msm_data.csv')
+dataset.export_results_grouped_by_combo()
 
 
 

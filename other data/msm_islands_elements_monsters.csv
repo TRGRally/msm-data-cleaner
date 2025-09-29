@@ -1,0 +1,17 @@
+island,elements,monsters
+Plant,"Plant, Earth, Cold, Water","Shugabush, Ghazt, G'joob"
+Cold,"Plant, Cold, Water, Air","Grumpyre, Strombonin"
+Air,"Earth, Water, Cold, Air","Reebro, Yawstrich"
+Water,"Earth, Water, Plant, Air","Jeeode, Anglow"
+Earth,"Earth, Plant, Cold, Air","Humbug, Hyehehe"
+Haven,"Earth, Fire, Plant, Air",Buzzinga
+Oasis,"Fire, Air, Cold, Water",Cherubble
+Light,"Light, Fire, Plant, Cold",
+Psychic,"Psychic, Fire, Water, Plant",
+Faerie,"Faerie, Earth, Cold, Fire",
+Bone,"Bone, Fire, Earth, Water",
+Ethereal,"Plasma, Shadow, Mech, Cystal, Poison",
+Sanctum,"Bone, Light, Psychic, Faerie",
+Shugabush,,"PomPom, Potbelly, Mammott, Quibble, Oaktopus, Furcorn, Deedge, Shugabush, Shugabass, Shugitar, Shugajo, Shugarock, Shugabuzz, Shugabeats, Shugavox"
+Mythical,,"Cataliszt, Yawstrich, G'day, Strombonin, Cherubble, Hyehehe, Buzzinga, Sporerow, Bleatnik, Cranchee, shLep, Wheezel, Pinghound, Knurv"
+Shanty,,"Punkleton, Yool, Schmoochle, Blabbit, Hoola, Gobbleygourd, Clavavera, Viveine, Jam Boree, Carillong, Whiz-bang, Monculus, Ffidyll, Boo'qwurm, Spurrit"

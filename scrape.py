@@ -2,6 +2,7 @@ import requests
 from bs4 import BeautifulSoup, Tag
 import pandas as pd
 from collections import OrderedDict, defaultdict
+import sqlite3
 
 url = "https://mysingingmonsters.fandom.com/wiki/Monsters"
 
@@ -249,5 +250,8 @@ df = pd.DataFrame({
     "Species": [m for m, _ in ordered_rows],
     "Elements": [", ".join(e) for _, e in ordered_rows],
 })
-df.to_csv("msm_monster_elements.csv", index=False)
-print(f"Saved {len(df)} rows to msm_monster_elements.csv")
+df.to_csv("./other data/msm_monster_elements.csv", index=False)
+print(f"Saved {len(df)} rows to ./other data/msm_monster_elements.csv")
+
+
+
