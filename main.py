@@ -1,4 +1,7 @@
 import pandas as pd
+import requests
+from requests.adapters import HTTPAdapter, Retry
+from io import StringIO
 import numpy as np
 import Dataset
 
@@ -29,13 +32,24 @@ RARE_PARENTS_AS_COMMON = False  # makes all parents common. OFF by default as it
 # list of possible island names
 island_names = ["Plant", "Cold", "Air", "Water", "Earth", "Shugabush", "Ethereal", "Haven", "Oasis", "Mythical", "Light", "Psychic", "Faerie", "Bone", "Sanctum", "Shanty", "M Plant", "M Cold", "M Air", "M Water", "M Earth", "M Light", "M Psychic", "M Faerie", "M Bone"]
 
+# session setup with retry logic as google sheets errors on request sometimes
+session = requests.Session()
+retries = Retry(
+    total=5,
+    backoff_factor=1,
+    status_forcelist=[500, 502, 503, 504],
+)
+session.mount("https://", HTTPAdapter(max_retries=retries))
+
+
 # live fetching the master sheet as a csv
 SHEET_ID = "15kDI5lQL7szwh4YbjeZ6c4xRcLNpiMkXwLwfQzqGhCQ"
 GID = "0"
 url = f"https://docs.google.com/spreadsheets/d/{SHEET_ID}/export?format=csv&gid={GID}"
 print("Fetching breeding data from:", url)
-df = pd.read_csv(url, header=0)
-
+resp = session.get(url)
+resp.raise_for_status()
+df = pd.read_csv(StringIO(resp.text), header=0)
 print("Breeding data fetched")
 
 
@@ -44,7 +58,9 @@ VALIDATION_SHEET_ID = "1jn0Pt8SH0ve0WiH8RZlL-nyQODSriUCOJQlN6yLc9_E"
 VALIDATION_GID = "1001758888"
 url_val = f"https://docs.google.com/spreadsheets/d/{VALIDATION_SHEET_ID}/export?format=csv&gid={VALIDATION_GID}"
 print("Fetching validation data from:", url_val)
-df_val = pd.read_csv(url_val, usecols=[1, 2], header=0)
+resp_val = session.get(url_val)
+resp_val.raise_for_status()
+df_val = pd.read_csv(StringIO(resp_val.text), usecols=[1, 2], header=0)
 print("Validation data fetched")
 
 all_parent_monsters = df_val['Monsters that breed'].dropna().unique().tolist()

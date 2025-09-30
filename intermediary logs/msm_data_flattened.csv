@@ -295,7 +295,7 @@ themixedmaster,8/18/2025,,False,False,10.0,M Air,False,Rare Noggin,20,Rare Scups
 themixedmaster,8/18/2025,,False,False,10.0,Psychic,False,Gloptic,20,Rare Gloptic,19,Gloptic
 themixedmaster,8/18/2025,,False,False,10.0,Bone,False,Rare Noggin,20,Rare Toe Jammer,20,Fwog
 themixedmaster,8/18/2025,,False,False,10.0,M Plant,False,Entbrat,19,Rare Entbrat,20,Entbrat
-themixedmaster,8/18/2025,,True,True,10.0,M Psychic,False,Gloptic,19,Rare Rootitoot,20,24h
+themixedmaster,8/18/2025,,True,True,10.0,M Psychic,False,Gloptic,19,Rare Rootitoot,20,Hairionette
 themixedmaster,8/18/2025,,False,False,10.0,M Bone,False,Noggin,20,Toe Jammer,20,Fwog
 themixedmaster,8/18/2025,,False,False,10.0,M Water,False,Rare Toe Jammer,20,Rare Noggin,20,Fwog
 themixedmaster,8/18/2025,,False,False,10.0,Cold,False,Rare Mammott,15,Rare Thumpies,20,Thumpies
@@ -311,7 +311,40 @@ themixedmaster,8/18/2025,,False,False,10.0,M Cold,False,Rare Thumpies,20,Mammott
 themixedmaster,8/18/2025,,False,True,10.0,M Bone,False,Plinkajou,20,Rare Withur,20,Withur
 themixedmaster,8/18/2025,,False,False,10.0,M Cold,False,Rare Thumpies,20,Mammott,20,Mammott
 themixedmaster,8/18/2025,,False,False,10.0,M Cold,False,Thumpies,4,Rare Thumpies,20,Thumpies
-themixedmaster,8/19/2025,,False,False,10.0,,False,,,,,
+themixedmaster,8/19/2025,,False,False,10.0,Plant,True,Entbrat,20,Rare Entbrat,20,Entbrat
+themixedmaster,8/19/2025,,False,False,10.0,Earth,True,Quarrister,20,Rare Quarrister,20,Quarrister
+themixedmaster,8/19/2025,,True,False,10.0,Bone,False,Plinkajou,20,Rare Uuduk,20,Arcorina
+themixedmaster,8/19/2025,,False,False,10.0,Air,True,Riff,19,Rare Riff,19,Riff
+themixedmaster,8/19/2025,,False,False,10.0,Water,False,Rare Scups,20,Rare Noggin,20,Noggin
+themixedmaster,8/19/2025,,False,False,10.0,Water,False,Rare Scups,20,Rare Noggin,20,Noggin
+themixedmaster,8/19/2025,,False,False,10.0,Water,False,Rare Scups,20,Rare Noggin,20,Noggin
+themixedmaster,8/19/2025,,False,False,10.0,Water,False,Rare Scups,20,Rare Noggin,20,Scups
+themixedmaster,8/19/2025,,False,False,10.0,Haven,False,Rare Reedling,20,Rare Noggin,20,Noggin
+themixedmaster,8/19/2025,,False,False,10.0,Haven,False,Rare Reedling,20,Rare Noggin,20,Noggin
+themixedmaster,8/19/2025,,False,False,10.0,Haven,False,Rare Reedling,20,Rare Noggin,20,Reedling
+themixedmaster,8/19/2025,,False,False,10.0,M Air,False,Riff,19,Rare Riff,19,Riff
+themixedmaster,8/19/2025,,False,False,10.0,M Water,False,Rare Scups,20,Rare Noggin,20,Scups
+themixedmaster,8/19/2025,,False,False,10.0,M Earth,False,PomPom,20,Rare PomPom,20,PomPom
+themixedmaster,8/19/2025,,False,False,10.0,Water,False,Rare Scups,20,Rare Noggin,20,Noggin
+themixedmaster,8/19/2025,,False,False,10.0,Water,False,Rare Scups,20,Rare Noggin,20,Noggin
+themixedmaster,8/19/2025,,False,False,10.0,Water,False,Rare Scups,20,Rare Noggin,20,Scups
+themixedmaster,8/19/2025,,False,False,10.0,Haven,False,Rare Reedling,20,Rare Noggin,20,Reedling
+themixedmaster,8/19/2025,,False,False,10.0,Psychic,False,Gloptic,20,Rare Poppette,20,Poppette
+themixedmaster,8/19/2025,,False,False,10.0,M Water,False,Rare Scups,20,Rare Noggin,20,Scups
+themixedmaster,8/19/2025,,False,False,10.0,M Earth,False,PomPom,20,Rare PomPom,20,PomPom
+themixedmaster,8/19/2025,,False,True,10.0,M Psychic,False,Gloptic,20,Rare Rootitoot,20,Rootitoot
+themixedmaster,8/19/2025,,False,True,10.0,M Bone,False,Plinkajou,20,Rare Withur,20,Withur
+themixedmaster,8/20/2025,,False,False,10.0,Air,True,Riff,19,Rare Riff,19,Riff
+themixedmaster,8/20/2025,,False,False,10.0,Water,False,Rare Reedling,20,Rare Noggin,20,Reedling
+themixedmaster,8/20/2025,,False,False,10.0,Earth,True,Rare PomPom,20,Rare Noggin,20,Noggin
+themixedmaster,8/20/2025,,False,False,10.0,Earth,True,Rare PomPom,20,Rare Noggin,20,Noggin
+themixedmaster,8/20/2025,,False,False,10.0,Earth,True,Rare PomPom,20,Rare Noggin,20,PomPom
+themixedmaster,8/20/2025,,False,False,10.0,Haven,False,Rare Reedling,20,Rare Noggin,20,Reedling
+themixedmaster,8/20/2025,,False,False,10.0,Psychic,False,Gloptic,20,Rare Poppette,20,Poppette
+themixedmaster,8/20/2025,,False,False,10.0,M Air,False,Riff,19,Rare Riff,19,Riff
+themixedmaster,8/20/2025,,False,False,10.0,M Water,False,Rare Noggin,20,Rare Reedling,20,Noggin
+themixedmaster,8/20/2025,,False,False,10.0,M Water,False,Rare Noggin,20,Rare Reedling,20,Reedling
+themixedmaster,8/20/2025,,False,False,10.0,M Earth,False,PomPom,20,Rare PomPom,20,PomPom
 engispyro,8/18/2025,,True,False,10.0,Faerie,False,Rare Pladdie,20,Rare Bridg-it,20,Bridg-it
 engispyro,8/19/2025,,True,False,10.0,M Psychic,False,Gloptic,16,Oaktopus,16,Oaktopus
 engispyro,8/19/2025,,True,False,10.0,M Psychic,False,Gloptic,16,Oaktopus,16,Gloptic
@@ -502,7 +535,7 @@ rally.,8/25/2025,10:32:00,False,True,0.0,Haven,False,Reedling,15,Barrb,15,Reedli
 rally.,8/25/2025,10:32:00,False,True,0.0,Oasis,False,Congle,15,Woolabee,15,Congle
 rally.,8/25/2025,10:32:00,False,True,0.0,Oasis,False,Congle,15,Woolabee,15,Congle
 rally.,8/25/2025,10:33:00,False,True,0.0,M Cold,False,Bowgart,15,Spunge,15,Spunge
-rally.,8/25/2025,10:34:00,False,True,0.0,M AIr,False,T-Rox,15,Scups,15,T-Rox
+rally.,8/25/2025,10:34:00,False,True,0.0,M Air,False,T-Rox,15,Scups,15,T-Rox
 rally.,8/25/2025,10:34:00,False,True,0.0,M Water,False,Scups,15,Pummel,15,Pummel
 rally.,8/25/2025,10:34:00,False,True,0.0,M Earth,False,Thumpies,15,PomPom,15,PomPom
 rally.,8/25/2025,20:45:00,True,False,0.0,Plant,False,T-Rox,15,Pummel,15,Pummel
@@ -1032,7 +1065,36 @@ rally.,9/28/2025,,False,False,0.0,Faerie,False,Pladdie,15,Stogg,15,Stogg
 rally.,9/28/2025,,False,False,0.0,Faerie,False,Pladdie,15,Stogg,15,Stogg
 rally.,9/28/2025,,False,False,0.0,Bone,False,Plinkajou,16,Rare Fwog,15,Plinkajou
 rally.,9/28/2025,,False,False,0.0,Bone,False,Withur,16,Rare Clackula,15,Clackula
-rally.,9/28/2025,,False,False,0.0,M Bone,False,Plinkajou,15,Fwog,15,Plinkajou
+rally.,9/29/2025,,False,False,0.0,M Bone,False,Plinkajou,15,Fwog,15,Plinkajou
+rally.,9/29/2025,,False,False,0.0,Air,False,Riff,15,Drumpler,15,Drumpler
+rally.,9/29/2025,,False,False,0.0,Air,False,Riff,15,Drumpler,15,Drumpler
+rally.,9/29/2025,,False,False,0.0,Bone,False,Withur,16,Rare Clackula,15,Clackula
+rally.,9/29/2025,,False,False,0.0,Sanctum,False,Larvaluss,15,Mushaboom,15,Larvaluss
+rally.,9/29/2025,,False,False,0.0,Sanctum,False,Larvaluss,15,Mushaboom,15,Larvaluss
+rally.,9/29/2025,,False,False,0.0,Earth,False,Quarrister,15,Cybop,15,Cybop
+rally.,9/29/2025,,False,False,0.0,Earth,False,Quarrister,15,Cybop,15,Epic Noggin
+rally.,9/29/2025,,False,False,0.0,Faerie,False,Pladdie,15,Stogg,15,Stogg
+rally.,9/29/2025,,False,False,0.0,Faerie,False,Pladdie,15,Stogg,15,Stogg
+rally.,9/29/2025,,False,False,0.0,Bone,False,Plinkajou,16,Rare Fwog,15,Rare Plinkajou?
+rally.,9/29/2025,,False,False,0.0,Bone,False,Withur,16,Rare Clackula,15,Clackula
+rally.,9/29/2025,,False,False,0.0,Oasis,False,Whaddle,16,Woolabee,15,?
+rally.,9/29/2025,,False,False,0.0,Oasis,False,Whaddle,16,Woolabee,15,?
+rally.,9/29/2025,,False,False,0.0,Haven,False,Rare Kayna,15,Glowl,15,Kayna
+rally.,9/29/2025,,False,False,0.0,Haven,False,Rare Kayna,15,Glowl,15,Glowl
+rally.,9/29/2025,,False,False,0.0,Air,False,Riff,15,Drumpler,15,Drumpler
+rally.,9/29/2025,,False,False,0.0,Air,False,Riff,15,Drumpler,15,Drumpler
+rally.,9/29/2025,,False,False,0.0,M Bone,False,Plinkajou,15,Fwog,15,Plinkajou
+rally.,9/29/2025,,False,False,0.0,Air,False,Riff,15,Drumpler,15,Drumpler
+rally.,9/29/2025,,False,False,0.0,Air,False,Riff,15,Drumpler,15,Drumpler
+rally.,9/29/2025,,False,False,0.0,M Faerie,False,Pladdie,15,Drumpler,15,Drumpler
+rally.,9/29/2025,,False,False,0.0,M Faerie,False,Pladdie,15,Drumpler,15,Pladdie
+rally.,9/30/2025,,False,False,0.0,Air,False,Riff,15,Drumpler,15,Drumpler
+rally.,9/30/2025,,False,False,0.0,Air,False,Riff,15,Drumpler,15,Drumpler
+rally.,9/30/2025,,False,False,0.0,Earth,False,Quarrister,15,Cybop,15,Cybop
+rally.,9/30/2025,,False,False,0.0,Earth,False,Quarrister,15,Cybop,15,Cybop
+rally.,9/30/2025,,False,False,0.0,Sanctum,False,Larvaluss,15,Mushaboom,15,?
+rally.,9/30/2025,,False,False,0.0,Sanctum,False,Larvaluss,15,Mushaboom,15,?
+rally.,9/30/2025,,False,False,0.0,Bone,False,Withur,16,Rare Clackula,15,Clackula
 soupedupsupa,8/19/2025,,True,False,0.0,M Bone,False,Plinkajou,15,Rare Uuduk,10,Uuduk
 soupedupsupa,8/19/2025,,True,False,0.0,M Bone,False,Plinkajou,15,Rare Uuduk,10,Uuduk
 soupedupsupa,8/19/2025,,True,False,0.0,Bone,False,Plinkajou,16,Uuduk,10,Uuduk
