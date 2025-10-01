@@ -10,22 +10,24 @@ import Dataset
 
 # pre-processing options
 ASSUME_ZERO_TORCHES = True  # assume 0 torches if not provided, removes rows with no torch values if False
+ASSUME_NO_TITAN_SKIN = True  # assume titan skin is false if not provided, removes rows with no titan skin values if False
 TITLE_CASE_ISLAND_NAME = True  # some island names have incorrect capitalisation, this fixes them
 
 # validation options
 VALIDATE_MSM_DATE = True  # make sure the provided date exists and is valid
 VALIDATE_DAY_OR_NIGHT = False  # for paironormals: of the two day/night columns, at least one must be true
 VALIDATE_ISLAND_NAME = True  # checks the island name is in the list of possible island names
+VALIDATE_TITAN_SKIN = True  # checks titan skin is either true or false
 VALIDATE_TORCH_COUNT = True  # checks that torches is a number between 0-10
 VALIDATE_PARENTS_EXIST = True  # check that parents are in the list of monsters that can breed
 VALIDATE_PARENT_LEVELS = True  # levels must exist and be between 4-20
 VALIDATE_RESULTS_EXIST = True  # check that results are in the list of monsters that can be bred
 VALIDATE_AVAILABILITY = False  # checks that a monster was available on the date of breeding if event based
 
-
 # post-processing options
 REMOVE_TIME_SINCE_RESET = True  # only required for analysing stuff that resets independently of the date - drops column if not required
 RARE_PARENTS_AS_COMMON = False  # makes all parents common. OFF by default as it messes with rare + common same species breeding, but is useful for the majority of stuff
+USE_SOURCE_PSEUDONYMS = True  # replaces usernames in the sources column with Player1, Player2 etc. to preserve privacy. Lets me leave the results data on GitHub without feeling bad.
 
 # ======================================================================================================================
 
@@ -125,6 +127,15 @@ if ASSUME_ZERO_TORCHES:
     coerced['assume_zero_torches'] = df[torch_col].isna().sum() + (df[torch_col] == '').sum()
     df[torch_col] = pd.to_numeric(df[torch_col], errors='coerce').fillna(0).astype(int)
 
+# coercing blank titan skin entries to false if required
+if ASSUME_NO_TITAN_SKIN:
+    # pandas freaks out unless this nonsense is here
+    with pd.option_context('future.no_silent_downcasting', True):
+        skin_col = [col for col in df.columns if 'Titan' in col][0]
+        coerced['assume_no_titan_skin'] = df[skin_col].isna().sum() + (df[skin_col] == '').sum()
+        df[skin_col] = df[skin_col].fillna(False)
+        df[skin_col] = df[skin_col].astype(bool)
+
 
 # the df is now in a workable format so can start validation
 # each check runs on the original then a cleaned version is created at the end with violations removed or coerced
@@ -163,6 +174,14 @@ if VALIDATE_ISLAND_NAME:
     bad['island'] = set(original.index[~ok])
 else:
     bad['island'] = set()
+
+# titan skin validation
+if VALIDATE_TITAN_SKIN:
+    skin_col = [col for col in df.columns if 'Titan' in col][0]
+    ok = original[skin_col].isin([True, False, 'TRUE', 'FALSE', 'True', 'False', 1, 0, '1', '0'])
+    bad['skin'] = set(original.index[~ok])
+else:
+    bad['skin'] = set()
 
 # torch count validation
 if VALIDATE_TORCH_COUNT:
@@ -221,7 +240,6 @@ else:
     bad['availability'] = set()
 
 
-
 to_drop = set()
 for rule, indexes in bad.items():
     if len(indexes) > 0:
@@ -230,11 +248,8 @@ for rule, indexes in bad.items():
         print(original.loc[list(indexes)])
 
 
-
-
 # making the clean data set
 cleaned = original
-
 cleaned = cleaned.drop(index=to_drop).reset_index(drop=True)
 
 # post processing
@@ -252,11 +267,25 @@ if RARE_PARENTS_AS_COMMON:
 if REMOVE_TIME_SINCE_RESET:
     cleaned = cleaned.drop(columns=[time_col])
 
+# replace source names with pseudonyms?
+pseudonym_count = 0
+if USE_SOURCE_PSEUDONYMS:
+    source_col = [col for col in cleaned.columns if 'Source' in col][0]
+    unique_names = cleaned[source_col].dropna().unique().tolist()
+    name_map = {name: f"Player{idx+1}" for idx, name in enumerate(unique_names)}
+    pseudonym_count = len(unique_names)
+    cleaned[source_col] = cleaned[source_col].map(name_map).fillna(cleaned[source_col])
+    print(f"[x] Replaced {len(unique_names)} unique source names with pseudonyms\n")
+
 
 print("\nSummary ================================")
 
+if USE_SOURCE_PSEUDONYMS:
+    print(f" [✓] Replaced {pseudonym_count} unique source names with pseudonyms")
+
 if REMOVE_TIME_SINCE_RESET:
     print(f" [✓] Dropped column: {time_col}")
+
 
 total_coercions = 0
 for rule, count in coerced.items():

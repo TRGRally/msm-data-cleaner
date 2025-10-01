@@ -1,3 +1,4 @@
-/msm_data.csv
 .idea
 temp.txt
+__pycache__/
+/intermediary logs/
