@@ -308,7 +308,7 @@ print("========================================")
 
 cleaned.to_csv('msm_data.csv', index=False)
 
-print(availabilities)
+#print(availabilities)
 
 print("Exported cleaned data to msm_data.csv")
 
